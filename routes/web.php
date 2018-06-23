@@ -14,7 +14,8 @@
 
 Route::get('/', 'UserController@index')->name('home');
 Route::get('/shop', 'ShopController@index')->name('shop');
-Route::get('/users', 'UserController@profils')->name('profils');
+Route::get('/users/{id}/edit/', 'UserController@dashboard')->name('profils');
+Route::post('/users/{id}/update','UserController@update')->name('modif');
 
 Route::group(['prefix' => 'admin' , 'middleware' =>'can:access-admin'], function () {
     Route::get('/rcon', 'RconController@index')->name('Rcon');

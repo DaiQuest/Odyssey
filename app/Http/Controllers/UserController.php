@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use App\User;
 class UserController extends Controller
 {
@@ -45,7 +46,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**
@@ -65,9 +66,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+  public function dashboard($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users.index' ,['user' => $user]);
     }
 
     /**
@@ -79,7 +81,20 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         // validation des données
+        $this->validate($request, [
+            'name' => 'required|string',
+            'password' => 'required|string',
+            'email' => 'required|string',
+        ]);
+        $user = User::findOrFail($id);
+        if ($user->update($request->all())) {
+            Session::flash('message', 'Utilisateur mis à jour');
+            return redirect()->route('profils' , ['id' => auth()->user()->id ]);
+        } else {
+         
+            return redirect()->route('profils');
+        }
     }
 
     /**
