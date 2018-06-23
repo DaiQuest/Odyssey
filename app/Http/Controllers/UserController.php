@@ -89,10 +89,10 @@ class UserController extends Controller
         ]);
         $user = User::findOrFail($id);
         if ($user->update($request->all())) {
-            Session::flash('message', 'Utilisateur mis à jour');
+            Session::flash('success', 'Utilisateur mis à jour');
             return redirect()->route('profils' , ['id' => auth()->user()->id ]);
         } else {
-         
+           Session::flash('error', 'Error');
             return redirect()->route('profils');
         }
     }
