@@ -8,7 +8,6 @@
                     <h3 class="panel-title">{{$user->name}}</h3>
                 </div>
                 <div class="panel-body">
-                
                 </div>
                 <div class="panel-footer">
 				{{ auth()->user()->name }}
