@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 class UserController extends Controller
 {
     public function logout(){
@@ -17,7 +18,13 @@ class UserController extends Controller
      */
     public function index()
     {
+		
         return view('home.index');
+    }
+	  public function profils()
+    {
+		$users = User::all();
+        return view('users.index', ['user' => $users]);
     }
 
     /**

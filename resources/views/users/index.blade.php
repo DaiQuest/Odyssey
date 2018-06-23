@@ -1,22 +1,20 @@
 @extends('templates.default')
 @section('title','Shop')
 @section('content')
-
-    @foreach($shop as $shop)
+ @foreach($user as $user)
         <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{$shop->name}}</h3>
+                    <h3 class="panel-title">{{$user->name}}</h3>
                 </div>
                 <div class="panel-body">
-                   <img src="{{$shop->img}}" width="100" height="100">
+                
                 </div>
                 <div class="panel-footer">
-                    {{$shop->valeur}}
-					{{$shop->id}}
+				{{ auth()->user()->name }}
+                    {{$user->email}}
                 </div>
             </div>
         </div>
     @endforeach
-@endsection
-
+	@endsection
