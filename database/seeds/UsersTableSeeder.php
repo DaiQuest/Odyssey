@@ -17,5 +17,6 @@ class UsersTableSeeder extends Seeder
             'role' => 'admin',
             'password' => bcrypt('azerty'),
         ]);
+		
     }
 }

@@ -8,16 +8,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">Odyssey</a>
+            <a class="navbar-brand" href="http://localhost/Odyssey/public/">Odyssey</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
+			<li><a href="{{ route('posts') }}">News</a></li> 
                 <li><a href="{{route('shop')}}">Shop</a></li>
                 @auth()
                     @if (auth()->user()->role == 'admin')
-                        <li><a href="{{ route('Rcon') }}">Rcon</a></li>
+                        <li><a href="{{ route('Rcon') }}">Rcon</a></li>												
                     @endif
                 @endauth
                 @guest
@@ -108,14 +109,16 @@
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-			 <li><a href="#">Contact</a></li>
+			    <li><a href="{{route('contacts')}}">Contact</a></li>
                 <li><a href="#">Forum</a></li>
                 <li class="dropdown">
                     @auth()
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ auth()->user()->name }} <span class="caret"></span></a>
                     @endauth
                     <ul class="dropdown-menu">
+					@auth()
                        <li> <a href="{{ route('profils',['id' => auth()->user()->id]) }}"> My Profil</a></li>
+					   @endauth
                          <li> 	
                         <a class="dropdown-item" href="{{ route('logout') }}"
                            onclick="event.preventDefault();

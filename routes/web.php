@@ -14,12 +14,19 @@
 
 Route::get('/', 'UserController@index')->name('home');
 Route::get('/shop', 'ShopController@index')->name('shop');
+Route::get('/post', 'PostController@index')->name('posts');
+//contact
+Route::get('/contact', 'ContactController@create')->name('contacts');
+
+
+
 Route::get('/users/{id}/edit/', 'UserController@dashboard')->name('profils');
 Route::post('/users/{id}/update','UserController@update')->name('modif');
 
+
 Route::group(['prefix' => 'admin' , 'middleware' =>'can:access-admin'], function () {
     Route::get('/rcon', 'RconController@index')->name('Rcon');
-    Route::post('/rcon/cmd','RconController@ExecuteCommand')->name('RconCmd');
+    Route::post('/rcon/cmd','RconController@index')->name('RconCmd');
 
 });
 

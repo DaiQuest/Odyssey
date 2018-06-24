@@ -22,12 +22,10 @@
 </div>
 
 
-<div class="col-md-12 ">
+<div class="col-md-12">
     @component('elements.footer')
     @endcomponent
 </div>
 </div>
-
-
 </body>
 </html>
