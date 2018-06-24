@@ -16,8 +16,8 @@ Route::get('/', 'UserController@index')->name('home');
 Route::get('/shop', 'ShopController@index')->name('shop');
 Route::get('/post', 'PostController@index')->name('posts');
 //contact
-Route::get('/contact', 'ContactController@create')->name('contacts');
-
+Route::get('/contact','ContactController@create')->name('contacts');
+Route::post('/contact/store','ContactController@store')->name('insert');
 
 
 Route::get('/users/{id}/edit/', 'UserController@dashboard')->name('profils');

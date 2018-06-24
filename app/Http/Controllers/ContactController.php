@@ -34,20 +34,20 @@ class ContactController extends Controller
     public function store(Request $request)
     {
          $this->validate($request, [
-            'name' => 'required|string',
+            'EmailDestinateur' => 'required|string',
+			'Message' => 'required|string',
         ]);
         $data = $request->all();
         $contact = Contact::create($data);
         // Redirection et message
-        if ($category->exists) {
-            Session::flash('message', 'Nouvelle catégorie créée');
-            return redirect()->route('AdminCatIndex');
+        if ($data->exists) {
+            Session::flash('message', 'Message envoyé');
+            return redirect()->route('contacts');
         } else {
             Session::flash('message', 'Une erreur est survenue');
-            return redirect()->route('AdminCatCreate');
+            return redirect()->route('contacts');
         }
     }
-
     /**
      * Display the specified resource.
      *

@@ -18,7 +18,16 @@
 			
 				<textarea name="nom" style="height:100px; width:500px;"></textarea> 
 			
-   
+
+			{!! Form::model($data, ['route'=>['instert']]) !!}
+
+			{!! Form::label('name') !!}
+			
+			{!! Form::text('name', $data->EmailDestinateur,['required' => 'required']) !!}
+			
+		
+
+
                 </div>
 				
 				<br>
